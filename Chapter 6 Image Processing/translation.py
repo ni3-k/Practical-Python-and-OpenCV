@@ -1,6 +1,7 @@
 import numpy as np
 import argparse
 import cv2
+import imutils
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True, help="Path to the image")
@@ -16,4 +17,7 @@ cv2.imshow("Shifted Right and Down", shifted)
 M = np.float32([[1, 0, -50], [0, 1, -90]])
 shifted = cv2.warpAffine(image, M, (image.shape[1], image.shape[0]))
 cv2.imshow("Shifted Up and Left", shifted)
+
+shifted = imutils.translate(image, 0, 100)
+cv2.imshow("Shifted Down", shifted)
 cv2.waitKey(0)
